@@ -79,8 +79,28 @@ weekly_sales = pd.DataFrame(
     sales_ammount, index=["Mon", "Tues", "Wed", "Thurs", "Fri"],
     columns=["Almond Butter", "Peanut Butter", "Cashew Butter"])
 
+print(weekly_sales)
 # Create prices
 prices = np.array([10, 8, 12])
 
-butter_prices = pd.DataFrame(prices, index=['Price'], columns=[
+butter_prices = pd.DataFrame(prices.reshape(1, 3), index=['Price'], columns=[
                              "Almond Butter", "Peanut Butter", "Cashew Butter"])
+print(butter_prices)
+
+total_sales = prices.dot(sales_ammount.T)
+print(total_sales)
+
+# create daily sales
+
+daily_sales = butter_prices.dot(weekly_sales.T)
+print("Daily sales")
+print(daily_sales)
+
+weekly_sales['Total $'] = daily_sales.T
+print(weekly_sales)
+
+
+# comparision operator
+print("++++++++-+======================")
+print(a1)
+print(a2)
